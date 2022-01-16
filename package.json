@@ -1,0 +1,24 @@
+{
+  "name": "rainman",
+  "version": "1.0.0",
+  "description": "This is a discord bot that allows user to call upon it and retrieve weather stats in Canada for certain cities with an extension for others in future updates.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/guydmello/RainMan.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/guydmello/RainMan/issues"
+  },
+  "homepage": "https://github.com/guydmello/RainMan#readme",
+  "dependencies": {
+    "discord.js": "^13.6.0",
+    "dotenv": "^12.0.3"
+  }
+}
