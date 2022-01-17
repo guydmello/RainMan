@@ -1,1 +1,0 @@
-https://image.maps.ls.hereapi.com/mia/1.6/mapview?co=${weather.sys.country}&z=24&i=1&ci=${weather.name}&&&w=400&apiKey=${process.env.MAP_KEY}

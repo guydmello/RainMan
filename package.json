@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "This is a discord bot that allows user to call upon it and retrieve weather stats in Canada for certain cities with an extension for others in future updates.",
   "main": "index.js",
+  "type": "module",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon index.ts",
     "tsc": "tsc -w --skipLibCheck"

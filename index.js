@@ -2,7 +2,11 @@ import DiscordJS, { Intents } from 'discord.js'
 import dotenv from 'dotenv'
 dotenv.config()
 
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+
 const axios = require('axios')
+
 const fetch = require('node-fetch')
 const prefix = '!'
 const Default_Cities = ['toronto', 'mississauga', 'brampton', 'vaughan']
@@ -37,7 +41,7 @@ client.on("messageCreate", async msg => {
             msg.channel.send(`bot deleted ${args[0]} messages for you`)
         }
     }
-    function time_convert(t: number){
+    function time_convert(t){
         var date = new Date(t * 1000)
         var hours = date.getHours();
         var minutes = "0" + date.getMinutes();
