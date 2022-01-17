@@ -57,16 +57,16 @@ client.on("messageCreate", async msg => {
         }
         let weather = await getWeather()
         console.log(weather)
-        var gust
-        if (!weather.wind.gust){
-            gust = 0
-        }else{
-            gust = weather.wind.gust
-        }
         if (weather.cod === "404"){
             msg.channel.send("City not found!")
             return
-        }else{
+        } else {
+            var gust
+            if (!weather.wind.gust){
+                gust = 0
+            }else{
+                gust = weather.wind.gust
+            }
         const weatherEmbed = {
             color: 0x0099ff,
             title: `Weather for ${weather.name}, ${weather.sys.country}`,
@@ -118,7 +118,6 @@ client.on("messageCreate", async msg => {
                     value: `${weather.wind.deg}°`,
                     inline: true,
                 },
-
                 {
                     name: ':hot_face: Humidity:',
                     value: `${weather.main.humidity}%`,
@@ -210,11 +209,11 @@ client.on("messageCreate", async msg => {
                 },
                 {
                     name: 'Temperature:',
-                    value: `\n:thermometer: ${City_Data[0][1]}\n\n:thermometer: ${City_Data[1][1]}\n\n:thermometer: ${City_Data[2][1]}\n\n:thermometer: ${City_Data[3][1]}`,
+                    value: `\n:thermometer: ${Math.floor(City_Data[0][1])}\n\n:thermometer: ${Math.floor(City_Data[1][1])}\n\n:thermometer: ${Math.floor(City_Data[2][1])}\n\n:thermometer: ${Math.floor(City_Data[3][1])}`,
                     inline: true,
                 },
                 {
-                    name: 'Feels like:',
+                    name: 'Description:',
                     value: `\n:face_in_clouds: ${City_Data[0][3]}\n\n:face_in_clouds: ${City_Data[1][3]}\n\n:face_in_clouds: ${City_Data[2][3]}\n\n:face_in_clouds: ${City_Data[3][3]}`,
                     inline: true,
                 },
