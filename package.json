@@ -5,10 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon index.ts",
-    "tsc": "tsc -w --skipLibCheck"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
