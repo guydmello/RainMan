@@ -29,7 +29,6 @@ client.on("messageCreate", async msg => {
     }
     const args = msg.content.slice(prefix.length).trim().split(/ +/g)
     const command = args.shift()?.toLowerCase()
-    // console.log(args)
 
     if(command === 'clear') {
         let num = 256
@@ -49,10 +48,6 @@ client.on("messageCreate", async msg => {
         var formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
         return formattedTime
     }
-    // if (command === 'capslock') {
-    //     const combinedArgs = args.join(" ")
-    //     msg.channel.send(`${msg.author.username} is angry and has something to say: \n\n ${combinedArgs.toUpperCase()}`)
-    // }
     if (command === 'weather' && args[0]) {
         let getWeather = async () => {
             let result = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${args[0]},,${args[1]}&units=metric&appid=${process.env.WEATHER_KEY}`)
@@ -60,7 +55,6 @@ client.on("messageCreate", async msg => {
             return json
         }
         let weather = await getWeather()
-        console.log(weather)
         if (weather.cod === "404"){
             msg.channel.send("City not found!")
             return
@@ -136,12 +130,7 @@ client.on("messageCreate", async msg => {
                     name: ':city_sunset: Sunset:',
                     value: `${time_convert(weather.sys.sunset)}`,
                     inline: true,
-                },                
-                // {
-                //     name: '\u200b',
-                //     value: '\u200b',
-                //     inline: false,
-                // },
+                },
                 {
                     name: 'Map:',
                     value: `[Wanna go?](https://maps.google.com/?ll=${weather.coord.lat},${weather.coord.lon})`, 
@@ -157,28 +146,12 @@ client.on("messageCreate", async msg => {
                 icon_url: 'https://media.discordapp.net/attachments/932442757514031116/932444008259665920/cloud.jpg',
             },
         };
-        // msg.channel.send(`Here's Your Weather ${Math.floor(weather.main.temp)}, but it feels like ${Math.floor(weather.main.feels_like)} and 
-        // ${weather.weather.icon}`)
         msg.channel.send({ embeds: [weatherEmbed] })
     }
-
-        //http://openweathermap.org/img/w/10d.png
-        // msg.channel.send(`Here's Your Weather ${Math.round(weather.main.temp - 273.15)}, but it feels like ${Math.round(weather.main.feels_like - 273.15)}`)
     } else if (command === 'weather' && !args[0]) {
-        // let getWeather = async () => {
-        //     let result = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${args[0]}&units=metric&appid=${process.env.API_KEY}`)
-        //     let json = await result.json()
-        //     return json
-        // }
-        // let weather = await getWeather() 
-        // msg.channel.send(`Here's Your Weather ${Math.floor(weather.main.temp)}, but it feels like ${Math.floor(weather.main.feels_like)} and 
-        // ${weather.weather.icon}`)
-
-
         const City_Data = []
         for (let i = 0; i < Default_Cities.length; i++) {
             let getWeather = async () => {
-                // console.log (Default_Cities[i]);
                 let result = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${Default_Cities[i]}&units=metric&appid=${process.env.WEATHER_KEY}`)
                 let json = await result.json()
                 return json
@@ -186,12 +159,6 @@ client.on("messageCreate", async msg => {
             let weather = await getWeather()
             City_Data.push([weather.name, weather.main.temp, weather.main.feels_like, weather.weather[0].description])
         }
-        
-        // console.log(City_Data)
-        
-        // for (let i = 0; i < City_Data.length; i++) {
-        //     msg.channel.send(`${City_Data[i][0]}, ${City_Data[i][1]}, ${City_Data[i][2]}`)
-        // }
         const exampleEmbed = {
             color: 0x0099ff,
             title: 'Weather',
@@ -201,10 +168,6 @@ client.on("messageCreate", async msg => {
                 icon_url: 'https://media.discordapp.net/attachments/932442757514031116/932444008259665920/cloud.jpg',
                 url: 'https://discord.com/api/oauth2/authorize?client_id=932030243768795178&permissions=534723947584&scope=bot',
             },
-            // description: 'Some description here',
-            // thumbnail: {
-            //     url: 'https://i.imgur.com/AfFp7pu.png',
-            // },
             fields: [
                 {
                     name: 'Location:',
@@ -235,6 +198,3 @@ client.on("messageCreate", async msg => {
 })
 
 client.login(process.env.TOKEN)
-
-
-//api.openweathermap.org/data/2.5/weather?q={city name}&appid=process.env.API_KEY
