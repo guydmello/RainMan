@@ -15,18 +15,23 @@ const { MessageEmbed } = require('discord.js');
 const client = new DiscordJS.Client({
     intents: [
         Intents.FLAGS.GUILDS,
-        Intents.FLAGS.GUILD_MESSAGES
+        Intents.FLAGS.GUILD_MESSAGES,
+        Intents.FLAGS.GUILD_PRESENCES, 
+        Intents.FLAGS.GUILD_MEMBERS
     ]
 })
 
 client.on('ready', () => {
     console.log('The bot is ready')
+    console.log("----------------")
 })
 
 client.on("messageCreate", async msg => {
     if(!msg.content.startsWith(prefix)) {
         return
     }
+    console.log(msg.content)
+    console.log("-----------")
     const args = msg.content.slice(prefix.length).trim().split(/ +/g)
     const command = args.shift()?.toLowerCase()
 
@@ -181,7 +186,7 @@ client.on("messageCreate", async msg => {
                 },
                 {
                     name: 'Description:',
-                    value: `\n:face_in_clouds: ${City_Data[0][3]}\n\n:face_in_clouds: ${City_Data[1][3]}\n\n:face_in_clouds: ${City_Data[2][3]}\n\n:face_in_clouds: ${City_Data[3][3]}`,
+                    value: `\n:telescope: ${City_Data[0][3]}\n\n:telescope: ${City_Data[1][3]}\n\n:telescope: ${City_Data[2][3]}\n\n:telescope: ${City_Data[3][3]}`,
                     inline: true,
                 },
                 
