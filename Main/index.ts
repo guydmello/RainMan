@@ -51,12 +51,18 @@ client.on("messageCreate", async msg => {
     // }
     if (command === 'weather' && args[0]) {
         let getWeather = async () => {
-            let result = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${args[0]}&units=metric&appid=${process.env.WEATHER_KEY}`)
+            let result = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${args[0]},,${args[1]}&units=metric&appid=${process.env.WEATHER_KEY}`)
             let json = await result.json()
             return json
         }
-        let weather = await getWeather() 
+        let weather = await getWeather()
         console.log(weather)
+        var gust
+        if (!weather.wind.gust){
+            gust = 0
+        }else{
+            gust = weather.wind.gust
+        }
         if (weather.cod === "404"){
             msg.channel.send("City not found!")
             return
@@ -104,7 +110,7 @@ client.on("messageCreate", async msg => {
                 },
                 {
                     name: 'Gust:',
-                    value: `${weather.wind.gust}m/s`,
+                    value: `${gust}m/s`,
                     inline: true,
                 },
                 {
@@ -112,29 +118,35 @@ client.on("messageCreate", async msg => {
                     value: `${weather.wind.deg}°`,
                     inline: true,
                 },
-                // {
-                //     name: '\u200b',
-                //     value: '\u200b',
-                //     inline: false,
-                // },
+
                 {
                     name: ':hot_face: Humidity:',
                     value: `${weather.main.humidity}%`,
                     inline: true,
                 },
                 {
-                    name: ':sunrise: Sunrise',
+                    name: ':sunrise: Sunrise:',
                     value: `${time_convert(weather.sys.sunrise)}`,
                     inline: true,
                 },
                 {
-                    name: ':city_sunset: Sunset',
+                    name: ':city_sunset: Sunset:',
                     value: `${time_convert(weather.sys.sunset)}`,
                     inline: true,
+                },                
+                // {
+                //     name: '\u200b',
+                //     value: '\u200b',
+                //     inline: false,
+                // },
+                {
+                    name: 'Map:',
+                    value: `[Wanna go?](https://maps.google.com/?ll=${weather.coord.lat},${weather.coord.lon})`, 
                 },
             ],
+            heading: `Map for ${weather.name}, ${weather.sys.country}`,
             image: {
-                url: `https://image.maps.ls.hereapi.com/mia/1.6/mapview?co=${weather.sys.country}&z=25&i=1&ci=${weather.name}&&&w=400&apiKey=${process.env.MAP_KEY}`,
+                url: `https://image.maps.ls.hereapi.com/mia/1.6/mapview?co=${weather.sys.country}&z=24&i=1&ci=${weather.name}&&&w=400&apiKey=${process.env.MAP_KEY}`,
             },
             timestamp: new Date(),
             footer: {
