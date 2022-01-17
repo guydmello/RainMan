@@ -27,16 +27,6 @@ client.on("messageCreate", async msg => {
     const command = args.shift()?.toLowerCase()
     // console.log(args)
 
-    if (command === "ego") {
-        msg.react("😃")
-    }
-
-    if (command === 'ping') {
-        msg.reply({
-            content: process.env.API_KEY,
-        })
-    }
-
     if(command === 'clear') {
         let num = 256
         if (args[0]) {
@@ -55,13 +45,13 @@ client.on("messageCreate", async msg => {
         var formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
         return formattedTime
     }
-    if (command === 'capslock') {
-        const combinedArgs = args.join(" ")
-        msg.channel.send(`${msg.author.username} is angry and has something to say: \n\n ${combinedArgs.toUpperCase()}`)
-    }
+    // if (command === 'capslock') {
+    //     const combinedArgs = args.join(" ")
+    //     msg.channel.send(`${msg.author.username} is angry and has something to say: \n\n ${combinedArgs.toUpperCase()}`)
+    // }
     if (command === 'weather' && args[0]) {
         let getWeather = async () => {
-            let result = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${args[0]}&units=metric&appid=${process.env.API_KEY}`)
+            let result = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${args[0]}&units=metric&appid=${process.env.WEATHER_KEY}`)
             let json = await result.json()
             return json
         }
@@ -76,7 +66,7 @@ client.on("messageCreate", async msg => {
             title: `Weather for ${weather.name}, ${weather.sys.country}`,
             author: {
                 name: 'RainMan',
-                icon_url: 'https://i.imgur.com/AfFp7pu.png',
+                icon_url: 'https://media.discordapp.net/attachments/932442757514031116/932444008259665920/cloud.jpg',
                 url: 'https://discord.com/api/oauth2/authorize?client_id=932030243768795178&permissions=534723947584&scope=bot',
             },
             thumbnail: {
@@ -144,12 +134,12 @@ client.on("messageCreate", async msg => {
                 },
             ],
             image: {
-                url: 'https://i.imgur.com/AfFp7pu.png',
+                url: `https://image.maps.ls.hereapi.com/mia/1.6/mapview?co=${weather.sys.country}&z=25&i=1&ci=${weather.name}&&&w=400&apiKey=${process.env.MAP_KEY}`,
             },
             timestamp: new Date(),
             footer: {
-                text: 'Some footer text here',
-                icon_url: 'https://i.imgur.com/AfFp7pu.png',
+                text: 'Weather provided by RainMan',
+                icon_url: 'https://media.discordapp.net/attachments/932442757514031116/932444008259665920/cloud.jpg',
             },
         };
         // msg.channel.send(`Here's Your Weather ${Math.floor(weather.main.temp)}, but it feels like ${Math.floor(weather.main.feels_like)} and 
@@ -174,7 +164,7 @@ client.on("messageCreate", async msg => {
         for (let i = 0; i < Default_Cities.length; i++) {
             let getWeather = async () => {
                 // console.log (Default_Cities[i]);
-                let result = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${Default_Cities[i]}&units=metric&appid=${process.env.API_KEY}`)
+                let result = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${Default_Cities[i]}&units=metric&appid=${process.env.WEATHER_KEY}`)
                 let json = await result.json()
                 return json
             }
@@ -193,7 +183,7 @@ client.on("messageCreate", async msg => {
             url: 'https://discord.com/api/oauth2/authorize?client_id=932030243768795178&permissions=534723947584&scope=bot',
             author: {
                 name: 'RainMan',
-                icon_url: 'https://i.imgur.com/AfFp7pu.png',
+                icon_url: 'https://media.discordapp.net/attachments/932442757514031116/932444008259665920/cloud.jpg',
                 url: 'https://discord.com/api/oauth2/authorize?client_id=932030243768795178&permissions=534723947584&scope=bot',
             },
             // description: 'Some description here',
@@ -203,17 +193,17 @@ client.on("messageCreate", async msg => {
             fields: [
                 {
                     name: 'Location:',
-                    value: `:pushpin: ${City_Data[0][0]}\n\n:pushpin: ${City_Data[1][0]}\n\n:pushpin: ${City_Data[2][0]}\n\n:pushpin: ${City_Data[3][0]}`,
+                    value: `\n:pushpin: ${City_Data[0][0]}\n\n:pushpin: ${City_Data[1][0]}\n\n:pushpin: ${City_Data[2][0]}\n\n:pushpin: ${City_Data[3][0]}`,
                     inline: true,
                 },
                 {
                     name: 'Temperature:',
-                    value: `:thermometer: ${City_Data[0][1]}\n\n:thermometer: ${City_Data[1][1]}\n\n:thermometer: ${City_Data[2][1]}\n\n:thermometer: ${City_Data[3][1]}`,
+                    value: `\n:thermometer: ${City_Data[0][1]}\n\n:thermometer: ${City_Data[1][1]}\n\n:thermometer: ${City_Data[2][1]}\n\n:thermometer: ${City_Data[3][1]}`,
                     inline: true,
                 },
                 {
                     name: 'Feels like:',
-                    value: `:face_in_clouds: ${City_Data[0][3]}\n\n:face_in_clouds: ${City_Data[1][3]}\n\n:face_in_clouds: ${City_Data[2][3]}\n\n:face_in_clouds: ${City_Data[3][3]}`,
+                    value: `\n:face_in_clouds: ${City_Data[0][3]}\n\n:face_in_clouds: ${City_Data[1][3]}\n\n:face_in_clouds: ${City_Data[2][3]}\n\n:face_in_clouds: ${City_Data[3][3]}`,
                     inline: true,
                 },
                 
@@ -221,83 +211,11 @@ client.on("messageCreate", async msg => {
             timestamp: new Date(),
             footer: {
                 text: 'Weather provided by RainMan',
-                icon_url: 'https://i.imgur.com/AfFp7pu.png',
+                icon_url: 'https://media.discordapp.net/attachments/932442757514031116/932444008259665920/cloud.jpg',
             },
         };
         msg.channel.send({ embeds: [exampleEmbed] });
 
-    }
-
-    if(command === "test") {
-        const exampleEmbed = {
-            color: 0x0099ff,
-            title: 'Weather',
-            url: 'https://discord.com/api/oauth2/authorize?client_id=932030243768795178&permissions=534723947584&scope=bot',
-            author: {
-                name: 'RainMan',
-                icon_url: 'https://i.imgur.com/AfFp7pu.png',
-                url: 'https://discord.com/api/oauth2/authorize?client_id=932030243768795178&permissions=534723947584&scope=bot',
-            },
-            description: 'Some description here',
-            thumbnail: {
-                url: 'https://i.imgur.com/AfFp7pu.png',
-            },
-            fields: [
-                {
-                    name: 'Regular field title',
-                    value: 'Some value here',
-                },
-                {
-                    name: '\u200b',
-                    value: '\u200b',
-                    inline: false,
-                },
-                {
-                    name: 'Inline field title',
-                    value: 'Some value here',
-                    inline: true,
-                },
-                {
-                    name: 'Inline field title',
-                    value: 'Some value here',
-                    inline: true,
-                },
-                {
-                    name: 'Inline field title',
-                    value: 'Some value here',
-                    inline: true,
-                },
-                {
-                    name: 'test1' ,
-                    value: "```TESTING```",
-                    inline: true,
-                  },
-                  {
-                     name: 'test2' ,
-                     value: "```TESTING```",
-                     inline: true,
-                   },
-                   {
-                     name: 'test3' ,
-                     value: "```TESTING```",
-                     
-                   },
-                   {
-                     name: 'test4' ,
-                     value: "```TESTING```",
-                     inline: true,
-                   },
-            ],
-            image: {
-                url: 'https://i.imgur.com/AfFp7pu.png',
-            },
-            timestamp: new Date(),
-            footer: {
-                text: 'Some footer text here',
-                icon_url: 'https://i.imgur.com/AfFp7pu.png',
-            },
-        };
-        msg.channel.send({ embeds: [exampleEmbed] });
     }
 })
 
