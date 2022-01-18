@@ -9,7 +9,8 @@ const axios = require('axios')
 
 const fetch = require('node-fetch')
 const prefix = '!'
-const Default_Cities = ['toronto', 'mississauga', 'brampton', 'vaughan']
+var Default_Cities = ['Toronto', 'Mississauga', 'Brampton', 'Vaughan']
+var Main_Cities = ['Toronto', 'Mississauga', 'Brampton', 'Vaughan']
 const { MessageEmbed } = require('discord.js');
 
 const client = new DiscordJS.Client({
@@ -25,18 +26,66 @@ client.on('ready', () => {
     console.log('The bot is ready')
     console.log("----------------")
 })
+function capitalizeFirstLetter(string) {
+    return string[0].toUpperCase() + string.slice(1);
+}
+client.on('guildCreate', guild => {
+    guild.systemChannel.send(`Hello, I'm RainMan. Thanks for inviting me, here are a list of all my commands! :cloud:`)
+    const commandEmbed = {
+        color: 0x0099ff,
+        title: `Commands for RainMan`,
+        author: {
+            name: 'RainMan',
+            icon_url: 'https://media.discordapp.net/attachments/932442757514031116/932444008259665920/cloud.jpg',
+            url: 'https://discord.com/api/oauth2/authorize?client_id=932030243768795178&permissions=534723947584&scope=bot',
+        },
+        fields: [
+            {
+                name: "```!help```",
+                value: "This gives you all commands",
+            },
+            {
+                name: "```!weather```",
+                value: `This gives you 4 defualt location temprature and weather descriptions for ${capitalizeFirstLetter(Default_Cities[0])}, ${capitalizeFirstLetter(Default_Cities[1])}, ${capitalizeFirstLetter(Default_Cities[2])}, ${capitalizeFirstLetter(Default_Cities[3])}`,
+            },
+            {
+                name: "```!weather [City] [Country Code(Optional)]```",
+                value: "This gives you weather information as well as location on a map for the given City and the optional 2 letter Country Code",
+            },
+            {
+                name: "```!clear [number]```",
+                value: "clears the given number of messages",
+            },
+            {
+                name: "```!change [1-4] [City 1] [City 2 (Optional)] [City 3 (Optional)] [City 4 (Optional)]```",
+                value: "Changes the default city list. Changes the city numbers given from 1-4 to the new city inputs of City 1, City 2, City 3 or City 4",
+            },
+            {
+                name: "```!reset```",
+                value: `Resets the default city list: ${capitalizeFirstLetter(Default_Cities[0])}, ${capitalizeFirstLetter(Default_Cities[1])}, ${capitalizeFirstLetter(Default_Cities[2])}, ${capitalizeFirstLetter(Default_Cities[3])} ==> ${Main_Cities[0]}, ${Main_Cities[1]}, ${Main_Cities[2]}, ${Main_Cities[3]}.`,
+            },
+        ],
+        timestamp: new Date(),
+        footer: {
+            text: 'RainMan provided by Guy, Kavan, Piyush',
+            icon_url: 'https://media.discordapp.net/attachments/932442757514031116/932444008259665920/cloud.jpg',
+        },
+    };
+    guild.systemChannel.send({ embeds: [commandEmbed] })
+  });
 
 client.on("messageCreate", async msg => {
     if(!msg.content.startsWith(prefix)) {
         return
     }
+    msg.content.toLowerCase()
     console.log(msg.content)
     console.log("-----------")
     const args = msg.content.slice(prefix.length).trim().split(/ +/g)
     const command = args.shift()?.toLowerCase()
 
     if(command === 'clear') {
-        let num = 256
+        let num = 1
         if (args[0]) {
             num = parseInt(args[0]) + 1
         }
@@ -52,6 +101,86 @@ client.on("messageCreate", async msg => {
         var seconds = "0" + date.getSeconds();
         var formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
         return formattedTime
+    }
+    if (command === "help"){
+        const commandEmbed = {
+            color: 0x0099ff,
+            title: `Commands for RainMan`,
+            author: {
+                name: 'RainMan',
+                icon_url: 'https://media.discordapp.net/attachments/932442757514031116/932444008259665920/cloud.jpg',
+                url: 'https://discord.com/api/oauth2/authorize?client_id=932030243768795178&permissions=534723947584&scope=bot',
+            },
+            fields: [
+                {
+                    name: "```!weather```",
+                    value: `This gives you 4 defualt location temprature and weather descriptions for ${capitalizeFirstLetter(Default_Cities[0])}, ${capitalizeFirstLetter(Default_Cities[1])}, ${capitalizeFirstLetter(Default_Cities[2])}, ${capitalizeFirstLetter(Default_Cities[3])}`,
+                },
+                {
+                    name: "```!weather [City] [Country Code(Optional)]```",
+                    value: "This gives you weather information as well as location on a map for the given City and the optional 2 letter Country Code",
+                },
+                {
+                    name: "```!clear [number]```",
+                    value: "clears the given number of messages",
+                },
+                {
+                    name: "```!change [1-4] [City 1] [City 2 (Optional)] [City 3 (Optional)] [City 4 (Optional)]```",
+                    value: "Changes the default city list. Changes the city numbers given from 1-4 to the new city inputs of City 1, City 2, City 3 or City 4",
+                },
+                {
+                    name: "```!reset```",
+                    value: `Resets the default city list: ${capitalizeFirstLetter(Default_Cities[0])}, ${capitalizeFirstLetter(Default_Cities[1])}, ${capitalizeFirstLetter(Default_Cities[2])}, ${capitalizeFirstLetter(Default_Cities[3])} ==> ${Main_Cities[0]}, ${Main_Cities[1]}, ${Main_Cities[2]}, ${Main_Cities[3]}.`,
+                },
+
+            ],
+            timestamp: new Date(),
+            footer: {
+                text: 'RainMan provided by Guy, Kavan, Piyush',
+                icon_url: 'https://media.discordapp.net/attachments/932442757514031116/932444008259665920/cloud.jpg',
+            },
+        };
+        msg.channel.send({ embeds: [commandEmbed] })
+    }
+    if (command  === 'reset') {
+        Default_Cities = ['Toronto', 'Mississauga', 'Brampton', 'Vaughan']
+    }
+    if (command  === 'change' && args[0] && args[1]) {
+        if (!(isNaN(args[0]))) {
+            var len = args[0].length;
+            var Index = [];
+            for (let i = 0; i <= len; i++) {
+                var x = parseInt(args[0].charAt(i)) - 1;
+                if ((x <= 3) && (x >= 0)){
+                    Index.push(x)
+                }
+            }
+            var New_Cities = [];
+            for (let i = 1; i < len + 1; i++) {
+               if (args[i]) {
+                   New_Cities.push(args[i])
+               }
+            }
+            var j = 0;
+            while (j < New_Cities.length && j < Index.length) {
+                let getWeather = async () => {
+                    let result = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${New_Cities[j]},,${args[1]}&units=metric&appid=${process.env.WEATHER_KEY}`)
+                    let json = await result.json()
+                    return json
+                }
+                let weather = await getWeather()
+                if (!(weather.cod === "404")){
+                    Default_Cities[Index[j]] = New_Cities[j];
+                    j++;
+                } else {
+                    msg.channel.send(`Invaid City Input of ${New_Cities[j]}`)
+                }
+            }
+            
+        }
+        // !change toronto etobicoke
+    
+        // !change 124 london vaughan etobicoke
     }
     if (command === 'weather' && args[0]) {
         let getWeather = async () => {
@@ -162,6 +291,7 @@ client.on("messageCreate", async msg => {
                 return json
             }
             let weather = await getWeather()
+            console.log(weather)
             City_Data.push([weather.name, weather.main.temp, weather.main.feels_like, weather.weather[0].description])
         }
         const exampleEmbed = {
