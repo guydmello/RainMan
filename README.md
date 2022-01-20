@@ -213,7 +213,7 @@ Kavan Patel -
 
 Piyush Razdan - piyush.razdan@gmail.com
 
-Project Link: [https://github.com/guydmello/RainMan]
+Project Link: https://github.com/guydmello/RainMan
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
