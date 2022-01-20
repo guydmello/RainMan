@@ -29,23 +29,23 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+  <a href="https://github.com/guydmello/RainMan">
+    <img src="assets/cloud.jpg" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">Best-README-Template</h3>
+  <h3 align="center">RainMan</h3>
 
   <p align="center">
-    An awesome README template to jumpstart your projects!
+    An awesome Discord Bot that gives you all your weather needs!
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/guydmello/RainMan#readme"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
+    <a href="https://github.com/guydmello/RainMan">View Demo</a>
     ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
+    <a href="https://github.com/guydmello/RainMan/issues">Report Bug</a>
     ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a>
+    <a href="https://github.com/guydmello/RainMan/issues">Request Feature</a>
   </p>
 </div>
 
@@ -71,7 +71,6 @@
     <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
@@ -81,8 +80,6 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
 
 Weather is essential to check everyday, to know what plans to make or even what to wear. It helps us is our daily lives more then we know. Our team has created a discord bot using the OpenWeather API and Here API that accurately provides information of weather in any inputted city.
 
