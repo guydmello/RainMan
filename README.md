@@ -29,23 +29,23 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/guydmello/RainMan">
-    <img src="assets/cloud.jpg" alt="Logo" width="80" height="80">
+  <a href="https://github.com/othneildrew/Best-README-Template">
+    <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">RainMan</h3>
+  <h3 align="center">Best-README-Template</h3>
 
   <p align="center">
     An awesome README template to jumpstart your projects!
     <br />
-    <a href="https://github.com/guydmello/RainMan#readme"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/guydmello/RainMan">View Demo</a>
+    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
     ·
-    <a href="https://github.com/guydmello/RainMan/issues">Report Bug</a>
+    <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
     ·
-    <a href="https://github.com/guydmello/RainMan/issues">Request Feature</a>
+    <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a>
   </p>
 </div>
 
@@ -117,34 +117,27 @@ To get a local copy up and running follow these simple example steps.
 ### Prerequisites
 
 This is an example of how to list things you need to use the software and how to install them.
-* download node.js: https://nodejs.org/en/download/
+* npm
   ```sh
-  https://nodejs.org/en/download/
+  npm install npm@latest -g
   ```
 
 ### Installation
 
 _Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
 
-1. Get API Keys at [https://openweathermap.org/api](https://openweathermap.org/api) and [https://developer.here.com/develop/rest-apis](https://developer.here.com/develop/rest-apis)
-2. Create a discord bot and get Token at [https://discord.com/developers/applications](https://discord.com/developers/applications)
-3. Clone the repo
+1. Get a free API Key at [https://example.com](https://example.com)
+2. Clone the repo
    ```sh
-   git clone https://github.com/guydmello/RainMan.git
+   git clone https://github.com/your_username_/Project-Name.git
    ```
-4. Create a .env file in parent directory and insert API_KEY/TOKEN's
-   ```
-   touch .env
-   ```
-7. Install NPM packages
+3. Install NPM packages
    ```sh
    npm install
    ```
-5. Enter your API/TOKEN in `.env`
+4. Enter your API in `config.js`
    ```js
-   TOKEN = "Bot token here"
-   WEATHER_KEY = "Weather api key here"
-   MAP_KEY = "Map api key here"
+   const API_KEY = 'ENTER YOUR API';
    ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -154,9 +147,8 @@ _Below is an example of how you can instruct your audience on installing and set
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
+Discord is a popular platform for many users today and has many extensions which can be used to enchance accessibility. Our weather bot "RainMan" allows users to
+easily access weather statistics in any city around the world. This allows discord users a convenient way to see weather in a matter of seconds along with many more commands which allows you to see your top 4 weather information around the world. 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -197,9 +189,9 @@ Don't forget to give the project a star! Thanks again!
 <!-- CONTACT -->
 ## Contact
 
-Guy D'Mello - 
+Guy D'Mello - guyrdmello@gmail.com
 
-Kavan Patel - 
+Kavan Patel - kavan.canada@gmail.com
 
 Piyush Razdan - piyush.razdan@gmail.com
 
@@ -220,6 +212,7 @@ There are resources used to install, develop, and complete the project.
 * [Weather API](https://openweathermap.org/current)
 * [Developer Documentation](https://developer.here.com/documentation)
 * [GitHub](https://github.com/)
+* [Devpost](https://pyjac-rebooted.devpost.com/?ref_feature=challenge&ref_medium=discover)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
