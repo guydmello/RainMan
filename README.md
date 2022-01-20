@@ -208,7 +208,9 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 ## Contact
 
 Guy D'Mello
+
 Kavan Patel
+
 Piyush Razdan - piyush.razdan@gmail.com
 
 Project Link: [https://github.com/guydmello/RainMan]
