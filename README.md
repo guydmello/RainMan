@@ -111,27 +111,38 @@ Use the RainMan bot [link](https://bit.ly/3ImfJmv) and add it to any server to g
 <!-- GETTING STARTED -->
 ## Getting Started
 
+To get a local copy up and running follow these simple example steps.
+
 ### Prerequisites
 
-* npm
+* download node.js: https://nodejs.org/en/download/
   ```sh
-  npm install npm@latest -g
+  https://nodejs.org/en/download/
   ```
 
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Get API Keys at [https://openweathermap.org/api](https://openweathermap.org/api) and [https://developer.here.com/develop/rest-apis](https://developer.here.com/develop/rest-apis)
+
+3. Create a discord bot and get Token at [https://discord.com/developers/applications](https://discord.com/developers/applications)
+
+4. Clone the repo
    ```sh
-   git clone https://github.com/your_username_/Project-Name.git
+   git clone https://github.com/guydmello/RainMan.git
    ```
-3. Install NPM packages
+5. Create a .env file in parent directory and insert API_KEY/TOKEN's
+   ```
+   touch .env
+   ```
+6. Install NPM packages
    ```sh
    npm install
    ```
-4. Enter your API in `config.js`
+7. Enter your API/TOKEN in `.env`
    ```js
-   const API_KEY = 'ENTER YOUR API';
+   TOKEN = "Bot token here"
+   WEATHER_KEY = "Weather api key here"
+   MAP_KEY = "Map api key here"
    ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
