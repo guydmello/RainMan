@@ -218,7 +218,7 @@ Project Link: [https://github.com/your_username/repo_name](https://github.com/yo
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-There are resources used to install, develop and complete the project. 
+There are resources used to install, develop, and complete the project. 
 
 * [discord.js](https://discord.js.org/#/)
 * [Intro to Axios](https://axios-http.com/docs/intro)
