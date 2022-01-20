@@ -168,9 +168,9 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 
 - [x] Used discord.js
 - [x] Installed node.js
-- [ ] Implemented RainMain in index.js
-- [ ] Used a Weather API and Key
-- [ ] Added a readme
+- [x] Implemented RainMain in index.js
+- [x] Used a Weather API and Key
+- [x] Added a readme
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
