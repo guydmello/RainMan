@@ -207,9 +207,9 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Guy D'Mello
+Guy D'Mello - 
 
-Kavan Patel
+Kavan Patel - 
 
 Piyush Razdan - piyush.razdan@gmail.com
 
