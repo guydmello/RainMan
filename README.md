@@ -147,7 +147,7 @@ _Below is an example of how you can instruct your audience on installing and set
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Discord is a popular platform for many users today and has many extensions which can be used to enchance accessibility. Our weather bot "RainMan" allows users to
+Discord is a popular platform for many users today and has many extensions which can be used to enchance accessibility. Our weather bot RainMan allows users to
 easily access weather statistics in any city around the world. This allows discord users a convenient way to see weather in a matter of seconds along with many more commands which allows you to see your top 4 weather information around the world. 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
