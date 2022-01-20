@@ -206,7 +206,7 @@ Project Link: https://github.com/guydmello/RainMan
 
 There are resources used to install, develop, and complete the project. 
 
-* [discord.js](https://discord.js.org/#/)
+* [Discord.js](https://discord.js.org/#/)
 * [Intro to Axios](https://axios-http.com/docs/intro)
 * [Linux Man Pages](https://man7.org/linux/man-pages/man1/env.1.html)
 * [Weather API](https://openweathermap.org/current)
