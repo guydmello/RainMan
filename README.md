@@ -84,16 +84,14 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-There are many great README templates available on GitHub; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
+Weather is essential to check everyday, to know what plans to make or even what to wear. It helps us is our daily lives more then we know. Our team has created a discord bot using the OpenWeather API and Here API that accurately provides information of weather in any inputted city.
 
-Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should implement DRY principles to the rest of your life :smile:
+Features include:
+* Weather information in any inputted city including temprature, feels like, max/min, and humidity.
+* A default list of 4 cities that can be personalized to user preference
+* Even a message delete which can clear up some of that weather clutter.
 
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have contributed to expanding this template!
-
-Use the `BLANK_README.md` to get started.
+Use the RainMan bot link and add it to any server to get started.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
