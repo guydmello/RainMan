@@ -21,8 +21,9 @@
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
+[![LinkedInGuy][linkedin-shield]][linkedin-urlGuy]
+[![LinkedInKavan][linkedin-shield]][linkedin-urlKavan]
+[![LinkedInPiyush][linkedin-shield]][linkedin-urlPiyush]
 
 
 
@@ -81,6 +82,8 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
+[![Product Name Screen Shot][product-screenshot]](https://example.com)
+
 Weather is essential to check everyday, to know what plans to make or even what to wear. It helps us is our daily lives more then we know. Our team has created a discord bot using the OpenWeather API and Here API that accurately provides information of weather in any inputted city.
 
 Features include:
@@ -108,20 +111,14 @@ Use the RainMan bot [link](https://bit.ly/3ImfJmv) and add it to any server to g
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
-
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
 * npm
   ```sh
   npm install npm@latest -g
   ```
 
 ### Installation
-
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
 
 1. Get a free API Key at [https://example.com](https://example.com)
 2. Clone the repo
@@ -218,15 +215,15 @@ There are resources used to install, develop, and complete the project.
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
-[contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
+[contributors-url]: https://github.com/guydmello/RainMan/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=for-the-badge
-[forks-url]: https://github.com/othneildrew/Best-README-Template/network/members
+[forks-url]: https://github.com/guydmello/RainMan/network/members
 [stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=for-the-badge
-[stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
+[stars-url]: https://github.com/guydmello/RainMan/stargazers
 [issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
-[issues-url]: https://github.com/othneildrew/Best-README-Template/issues
-[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
-[license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
+[issues-url]: https://github.com/guydmello/RainMan/issues
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/othneildrew
-[product-screenshot]: images/screenshot.png
+[linkedin-urlGuy]: https://www.linkedin.com/in/guydmello/
+[linkedin-urlKavan]: https://www.linkedin.com/in/kavan-patel1/
+[linkedin-urlPiyush]: https://www.linkedin.com/in/piyushrazdan/
+[product-screenshot]: assets/ScreenShot.png
