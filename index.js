@@ -1,18 +1,15 @@
+// required imports and dotenv to hide api keys
 import DiscordJS, { Intents } from 'discord.js'
 import dotenv from 'dotenv'
 dotenv.config()
-
 import { createRequire } from 'module';
+
+// required variables that cannot be modified or changed as they require imports and predefined start values.
 const require = createRequire(import.meta.url);
-
 const axios = require('axios')
-
 const fetch = require('node-fetch')
 const prefix = '!'
-var Default_Cities = ['Toronto', 'Mississauga', 'Brampton', 'Vaughan']
-var Main_Cities = ['Toronto', 'Mississauga', 'Brampton', 'Vaughan']
 const { MessageEmbed } = require('discord.js');
-
 const client = new DiscordJS.Client({
     intents: [
         Intents.FLAGS.GUILDS,
@@ -22,13 +19,21 @@ const client = new DiscordJS.Client({
     ]
 })
 
+// default cities for weather and main cities if cities are modified.
+var Default_Cities = ['Toronto', 'Mississauga', 'Brampton', 'Vaughan']
+var Main_Cities = ['Toronto', 'Mississauga', 'Brampton', 'Vaughan']
+
 client.on('ready', () => {
     console.log('The bot is ready')
     console.log("----------------")
 })
+
+// function to capitalize first letter of word
 function capitalizeFirstLetter(string) {
     return string[0].toUpperCase() + string.slice(1);
 }
+
+// upon the bot being added into a server, sends a custom help message indicating commands.
 client.on('guildCreate', guild => {
     guild.systemChannel.send(`Hello, I'm RainMan. Thanks for inviting me, here are a list of all my commands! :cloud:`)
     const commandEmbed = {
@@ -74,26 +79,36 @@ client.on('guildCreate', guild => {
     guild.systemChannel.send({ embeds: [commandEmbed] })
   });
 
+// upon the bot being in a server, it can take multiple commands related to weather below
 client.on("messageCreate", async msg => {
     if(!msg.content.startsWith(prefix)) {
         return
     }
+
+    // parse the input string from the user
     msg.content.toLowerCase()
     console.log(msg.content)
     console.log("-----------")
     const args = msg.content.slice(prefix.length).trim().split(/ +/g)
     const command = args.shift()?.toLowerCase()
 
+    // if the command is clear, then it will clear messges in the specified channel
     if(command === 'clear') {
         let num = 1
         if (args[0]) {
             num = parseInt(args[0]) + 1
+            if (msg.channel.type === "GUILD_TEXT") {
+                msg.channel.bulkDelete(num)
+                msg.channel.send(`bot deleted ${args[0]} messages for you`)
+            }
         }
-        if (msg.channel.type === "GUILD_TEXT") {
+        else {
             msg.channel.bulkDelete(num)
-            msg.channel.send(`bot deleted ${args[0]} messages for you`)
+            msg.channel.send(`bot deleted 1 messages for you`)
         }
     }
+
+    // function to convert time from utc to eastern standard time
     function time_convert(t){
         var date = new Date(t * 1000)
         var hours = date.getHours();
@@ -102,6 +117,8 @@ client.on("messageCreate", async msg => {
         var formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
         return formattedTime
     }
+
+    // if command is help, then print a embed that displays commands
     if (command === "help"){
         const commandEmbed = {
             color: 0x0099ff,
@@ -142,9 +159,12 @@ client.on("messageCreate", async msg => {
         };
         msg.channel.send({ embeds: [commandEmbed] })
     }
+
+    // if reset, reset the 4 cities to their defualt
     if (command  === 'reset') {
-        Default_Cities = ['Toronto', 'Mississauga', 'Brampton', 'Vaughan']
+        Default_Cities = Main_Cities;
     }
+    // if command change, change the 4 cities to the user specified in the 4 options
     if (command  === 'change' && args[0] && args[1]) {
         if (!(isNaN(args[0]))) {
             var len = args[0].length;
@@ -175,13 +195,11 @@ client.on("messageCreate", async msg => {
                 } else {
                     msg.channel.send(`Invaid City Input of ${New_Cities[j]}`)
                 }
-            }
-            
+            } 
         }
-        // !change toronto etobicoke
-    
-        // !change 124 london vaughan etobicoke
     }
+
+    // if weather, print a bunch of data based on user input
     if (command === 'weather' && args[0]) {
         let getWeather = async () => {
             let result = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${args[0]},,${args[1]}&units=metric&appid=${process.env.WEATHER_KEY}`)
@@ -276,12 +294,13 @@ client.on("messageCreate", async msg => {
             },
             timestamp: new Date(),
             footer: {
-                text: 'Weather provided by RainMan',
+                text: 'RainMan provided by Guy, Kavan, Piyush',
                 icon_url: 'https://media.discordapp.net/attachments/932442757514031116/932444008259665920/cloud.jpg',
             },
         };
         msg.channel.send({ embeds: [weatherEmbed] })
     }
+    // if defualt weather, log the emebed of the defualt cities unless user CHANGE_ID
     } else if (command === 'weather' && !args[0]) {
         const City_Data = []
         for (let i = 0; i < Default_Cities.length; i++) {
@@ -323,7 +342,7 @@ client.on("messageCreate", async msg => {
             ],
             timestamp: new Date(),
             footer: {
-                text: 'Weather provided by RainMan',
+                text: 'RainMan provided by Guy, Kavan, Piyush',
                 icon_url: 'https://media.discordapp.net/attachments/932442757514031116/932444008259665920/cloud.jpg',
             },
         };
@@ -331,5 +350,5 @@ client.on("messageCreate", async msg => {
 
     }
 })
-
+// ensure client is logged in witht the api token
 client.login(process.env.TOKEN)
