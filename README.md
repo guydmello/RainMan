@@ -88,7 +88,7 @@ Features include:
 * A default list of 4 cities that can be personalized to user preference
 * Even a message delete which can clear up some of that weather clutter.
 
-Use the RainMan bot link and add it to any server to get started.
+Use the RainMan bot [link](https://bit.ly/3ImfJmv) and add it to any server to get started.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
