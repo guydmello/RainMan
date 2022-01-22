@@ -51,7 +51,7 @@ client.on('guildCreate', guild => {
             },
             {
                 name: "```!weather```",
-                value: `This gives you 4 defualt location temprature and weather descriptions for ${capitalizeFirstLetter(Default_Cities[0])}, ${capitalizeFirstLetter(Default_Cities[1])}, ${capitalizeFirstLetter(Default_Cities[2])}, ${capitalizeFirstLetter(Default_Cities[3])}`,
+                value: `This gives you 4 default location temprature and weather descriptions for ${capitalizeFirstLetter(Default_Cities[0])}, ${capitalizeFirstLetter(Default_Cities[1])}, ${capitalizeFirstLetter(Default_Cities[2])}, ${capitalizeFirstLetter(Default_Cities[3])}`,
             },
             {
                 name: "```!weather [City] [Country Code(Optional)]```",
@@ -99,12 +99,12 @@ client.on("messageCreate", async msg => {
             num = parseInt(args[0]) + 1
             if (msg.channel.type === "GUILD_TEXT") {
                 msg.channel.bulkDelete(num)
-                msg.channel.send(`bot deleted ${args[0]} messages for you`)
+                msg.channel.send(`RainMan deleted ${args[0]} messages for you`)
             }
         }
         else {
             msg.channel.bulkDelete(num)
-            msg.channel.send(`bot deleted 1 messages for you`)
+            msg.channel.send(`RainMan deleted 1 messages for you`)
         }
     }
 
@@ -131,7 +131,7 @@ client.on("messageCreate", async msg => {
             fields: [
                 {
                     name: "```!weather```",
-                    value: `This gives you 4 defualt location temprature and weather descriptions for ${capitalizeFirstLetter(Default_Cities[0])}, ${capitalizeFirstLetter(Default_Cities[1])}, ${capitalizeFirstLetter(Default_Cities[2])}, ${capitalizeFirstLetter(Default_Cities[3])}`,
+                    value: `This gives you 4 default location temprature and weather descriptions for ${capitalizeFirstLetter(Default_Cities[0])}, ${capitalizeFirstLetter(Default_Cities[1])}, ${capitalizeFirstLetter(Default_Cities[2])}, ${capitalizeFirstLetter(Default_Cities[3])}`,
                 },
                 {
                     name: "```!weather [City] [Country Code(Optional)]```",
@@ -160,9 +160,10 @@ client.on("messageCreate", async msg => {
         msg.channel.send({ embeds: [commandEmbed] })
     }
 
-    // if reset, reset the 4 cities to their defualt
+    // if reset, reset the 4 cities to their default
     if (command  === 'reset') {
         Default_Cities = Main_Cities;
+        msg.channel.send(`Cities have been Reset`);
     }
     // if command change, change the 4 cities to the user specified in the 4 options
     if (command  === 'change' && args[0] && args[1]) {
@@ -195,7 +196,8 @@ client.on("messageCreate", async msg => {
                 } else {
                     msg.channel.send(`Invaid City Input of ${New_Cities[j]}`)
                 }
-            } 
+            }
+            msg.channel.send(`Cities have been changed`);
         }
     }
 
@@ -300,7 +302,7 @@ client.on("messageCreate", async msg => {
         };
         msg.channel.send({ embeds: [weatherEmbed] })
     }
-    // if defualt weather, log the emebed of the defualt cities unless user CHANGE_ID
+    // if default weather, log the emebed of the default cities unless user CHANGE_ID
     } else if (command === 'weather' && !args[0]) {
         const City_Data = []
         for (let i = 0; i < Default_Cities.length; i++) {
